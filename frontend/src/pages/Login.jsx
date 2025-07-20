@@ -47,7 +47,7 @@ const Login = () => {
     if(token){
       navigate('/')
     }
-  },[token])
+  },[token,navigate])
 
   return (
     <form  className='min-h-[80vh] flex items-center' onSubmit={onSubmitHandler}>
