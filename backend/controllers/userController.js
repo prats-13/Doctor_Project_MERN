@@ -1,4 +1,4 @@
-import validator, { equals } from 'validator'
+import validator from 'validator'
 import bcrypt from 'bcrypt'
 import userModel from '../models/userModel.js'
 import jwt from 'jsonwebtoken'
