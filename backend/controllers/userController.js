@@ -1,4 +1,4 @@
-import validator from 'validator'
+import validator, { equals } from 'validator'
 import bcrypt from 'bcrypt'
 import userModel from '../models/userModel.js'
 import jwt from 'jsonwebtoken'
@@ -67,7 +67,22 @@ const loginUser=async(req,res)=>{
   }
 }
 
-export {registerUser,loginUser}
+/* api to get user profile data */
+
+const getProfile=async(req,res)=>{
+  try{
+    const {userId}=req.body
+
+    const userData=await userModel.findById(userId).select('-password')
+
+    res.json({success:true,userData})
+  }catch(error){
+    console.log(error)
+    res.json({success:false,message:error.message})
+  }
+}
+
+export {registerUser,loginUser,getProfile}
 
 
 
