@@ -17,7 +17,11 @@ const TopDoctors = () => {
             <img className='bg-blue-50' src={doctor.image} alt="" />
             <div className='p-4'>
               <div className='flex items-center gap-2 text-sm text-center text-green-500'>
-                <p className='w-2 h-2 bg-green-500 rounded-full '></p><p>Available</p>
+                <div className='flex items-center gap-2'>
+                  {
+                    doctor.available ? <><p className='w-2 h-2 bg-green-500 rounded-full'></p><p>Available</p></>:<><p className='w-2 h-2 bg-red-500 rounded-full '></p><p>Not available</p></>
+                  }
+                </div>
               </div>
               <p className='text-gray-900 text-lg font-medium'>{doctor.name}</p>
               <p className='text-gray-600 text-sm'>{doctor.speciality}</p>
