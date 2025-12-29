@@ -169,7 +169,18 @@ const bookAppointment=async(req,res)=>{
   }
 }
 
+const listAppointments=async(req,res)=>{
+  try{
+    const {userId}=req.body
+    const appointments=await appointmentModel.find({userId})
+    res.json({success:true,appointments})
 
-export {registerUser,loginUser,getProfile,updateProfile,bookAppointment}
+  }catch(error){
+    console.log(error)
+    res.json({success:false,message:error.message})
+  }
+}
+
+export {registerUser,loginUser,getProfile,updateProfile,bookAppointment,listAppointments}
 
 /* login register getprofile update profile book appointment displaying book appointment cancelling appointment payment gateway*/
