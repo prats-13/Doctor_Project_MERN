@@ -7,6 +7,12 @@ const MyAppointments = () => {
 
   const {backendUrl,token}=useContext(AppContext)
   const [appointments,setAppointments]=React.useState([])
+  const months=["January","February","March","April","May","June","July","August","September","October","November","December"]
+
+  const slotDateFormat=(slotData)=>{
+    const dateArray=slotData.split('_')
+    return dateArray[0]+" "+months[Number(dateArray[1]-1)]+" "+dateArray[2]
+  }
 
   const getUserAppointments=async()=>{
     try{
@@ -42,7 +48,7 @@ const MyAppointments = () => {
             <p className='text-zinc-700 font-medium mt-1'>Address</p>
             <p className='text-xs'>{item.docData.address.line1}</p>
             <p className='text-xs'>{item.docData.address.line2}</p>
-            <p className='text-xs mt-1'><span className='text-sm text-neutral-700 font-medium'>Date & Time:</span> {item.slotDate} | {item.slotTime}</p>
+            <p className='text-xs mt-1'><span className='text-sm text-neutral-700 font-medium'>Date & Time:</span> {slotDateFormat(item.slotDate)} | {item.slotTime}</p>
           </div>
           <div></div>
           <div className='flex flex-col gap-2 justify-end'>
